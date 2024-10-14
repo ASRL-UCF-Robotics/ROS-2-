@@ -7,6 +7,9 @@
     <arg name="headless" default="false" />
     <arg name="debug" default="false" />
 
+    <!-- IMPORTANT -->
+    <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="paused" value="$(arg paused)" />
         <arg name="use_sim_time" value="$(arg use_sim_time)" />
