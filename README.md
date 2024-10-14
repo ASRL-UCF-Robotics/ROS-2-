@@ -1,5 +1,5 @@
 IMPORTANT NOTES
-- All done in Xml
+- All done in Xml 2.0, pls update all
 - Catkin_make is for ROS 1, we use colcon now
 - If you forget where you are, use pwd to find where the files are being made on your windows. They are usually in Linux/Ubuntu-24.04/home/NAME/HERE.
 
