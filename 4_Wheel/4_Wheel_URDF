@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<robot name="4wheelomniASRL">
+  <link name="base">
+    <visual>
+      <geometry>
+        <box size="19.6875 19.6875 8"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="wheel_1_link">
+    <visual>
+      <geometry>
+        <cylinder length="1" radius="0.5"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="wheel_2_link">
+    <visual>
+      <geometry>
+        <cylinder length="1" radius="0.5"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="wheel_3_link">
+    <visual>
+      <geometry>
+        <cylinder length="1" radius="0.5"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="wheel_4_link">
+    <visual>
+      <geometry>
+        <cylinder length="1" radius="0.5"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="wheel_1">
+    <visual>
+      <geometry>
+        <cylinder length="1.375" radius="3"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="wheel_2">
+    <visual>
+      <geometry>
+        <cylinder length="1.375" radius="3"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="wheel_3">
+    <visual>
+      <geometry>
+        <cylinder length="1.375" radius="3"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="wheel_4">
+    <visual>
+      <geometry>
+        <cylinder length="1.375" radius="3"/>
+      </geometry>
+    </visual>
+  </link>
+
+
+  <joint name="base_to_wheel_1_link" type="fixed">
+    <parent link="base"/>
+    <child link="wheel_1_link"/>
+    <origin rpy="0 0 0" xyz="12.59375 0 2"/>
+  </joint>
+
+</robot>
