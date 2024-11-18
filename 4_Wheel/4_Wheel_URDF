@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="4wheelomniASRL">
+<robot name="Robot1">
   <link name="base">
     <visual>
       <geometry>
@@ -73,10 +73,56 @@
   </link>
 
 
-  <joint name="base_to_wheel_1_link" type="fixed">
+  <joint name="base_w1link" type="fixed">
     <parent link="base"/>
     <child link="wheel_1_link"/>
     <origin rpy="0 0 0" xyz="12.59375 0 2"/>
   </joint>
+
+  <joint name="base_w2link" type="fixed">
+    <parent link="base"/>
+    <child link="wheel_2_link"/>
+    <origin rpy="0 0 0" xyz="12.59375 0 2"/>
+  </joint>
+
+  <joint name="base_w3link" type="fixed">
+    <parent link="base"/>
+    <child link="wheel_3_link"/>
+    <origin rpy="0 0 0" xyz="12.59375 0 2"/>
+  </joint>
+
+  <joint name="base_w4link" type="fixed">
+    <parent link="base"/>
+    <child link="wheel_4_link"/>
+    <origin rpy="0 0 0" xyz="12.59375 0 2"/>
+  </joint>
+
+  <joint name="w1link_w1" type="fixed">
+    <parent link="wheel_1_link"/>
+    <child link="wheel_1"/>
+    <origin rpy="0 0 0" xyz="12.59375 0 2"/>
+  </joint>
+
+  <joint name="w2link_w2" type="fixed">
+    <parent link="wheel_2_link"/>
+    <child link="wheel_2"/>
+    <origin rpy="0 0 0" xyz="12.59375 0 2"/>
+  </joint>
+
+  <joint name="w3link_w3" type="fixed">
+    <parent link="wheel_3_link"/>
+    <child link="wheel_3"/>
+    <origin rpy="0 0 0" xyz="12.59375 0 2"/>
+  </joint>
+
+  <joint name="w4link_w4" type="fixed">
+    <parent link="wheel_4_link"/>
+    <child link="wheel_4"/>
+    <origin rpy="0 0 0" xyz="12.59375 0 2"/>
+  </joint>
+
+
+
+
 
 </robot>
