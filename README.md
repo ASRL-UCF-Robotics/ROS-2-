@@ -16,4 +16,4 @@ source /opt/ros/jazzy/setup.bash
 colcon build
 
 - Launch Gazebo
-gz sim building_robot.sdf
+<gz sim building_robot.sdf>
