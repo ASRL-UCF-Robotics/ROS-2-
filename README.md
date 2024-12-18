@@ -13,7 +13,7 @@ STEPS
 source /opt/ros/jazzy/setup.bash
 
 - Make build - FIX ERRORS HERE
-colcon build
+`colcon build`
 
 - Launch Gazebo
-'gz sim building_robot.sdf'
+`gz sim building_robot.sdf`
