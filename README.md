@@ -10,10 +10,13 @@ https://gazebosim.org/docs/latest/install_ubuntu/
 
 STEPS
 - Source ros 2 in terminal
-source /opt/ros/jazzy/setup.bash
+- 
+`source /opt/ros/jazzy/setup.bash`
 
 - Make build - FIX ERRORS HERE
+- 
 `colcon build`
 
 - Launch Gazebo
+- 
 `gz sim building_robot.sdf`
