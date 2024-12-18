@@ -18,6 +18,7 @@ STEPS
 `colcon build`
 
 - Launch Gazebo
+  
 Empty Room
 
 `gz sim empty.sdf`
