@@ -16,4 +16,4 @@ source /opt/ros/jazzy/setup.bash
 colcon build
 
 - Launch Gazebo
-ros2 launch omni_gazebo gazebo.launch
+gz sim building_robot.sdf
