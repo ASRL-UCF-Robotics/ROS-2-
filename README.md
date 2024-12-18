@@ -18,5 +18,6 @@ STEPS
 `colcon build`
 
 - Launch Gazebo
-  
-`gz sim building_robot.sdf`
+Empty Room
+
+`gz sim empty.sdf`
