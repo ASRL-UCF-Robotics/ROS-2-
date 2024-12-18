@@ -25,4 +25,4 @@ Empty Room
 
 Launch URDF
 
-`gz service -s /world/empty/create --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 1000 --req 'sdf_filename: "/home/USERHERE/FILEHERE/model.urdf", name: "urdf_model"'`
+`gz service -s /world/empty/create --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 1000 --req 'sdf_filename: "/home/USERHERE/FILEHERE/modelgaz.urdf", name: "urdf_model"'`
