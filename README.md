@@ -22,3 +22,7 @@ STEPS
 Empty Room
 
 `gz sim empty.sdf`
+
+Launch URDF
+
+`gz service -s /world/empty/create --reqtype gz.msgs.EntityFactory --reptype gz.msgs.Boolean --timeout 1000 --req 'sdf_filename: "/home/USERHERE/FILEHERE/model.urdf", name: "urdf_model"'`
