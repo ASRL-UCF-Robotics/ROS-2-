@@ -157,4 +157,42 @@ izz="0.0001"/>
 <axis xyz="0 0 1" />
 </joint>
 
+<!-- Gazebo Transmission -->
+<!-- Motor 1-->
+<transmission name="tran1">
+<type>transmission_interface/SimpleTransmission</type>
+<joint name="base_to_w1">
+<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+</joint>
+<actuator name="motor1">
+<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+<mechanicalReduction>1</mechanicalReduction>
+</actuator>
+</transmission>
+
+<!-- Motor 2-->
+<transmission name="tran2">
+<type>transmission_interface/SimpleTransmission</type>
+<joint name="base_to_w2">
+<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+</joint>
+<actuator name="motor2">
+<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+<mechanicalReduction>1</mechanicalReduction>
+</actuator>
+</transmission>
+
+<!-- Motor 3-->
+<transmission name="tran3">
+<type>transmission_interface/SimpleTransmission</type>
+<joint name="base_to_w3">
+<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+</joint>
+<actuator name="motor3">
+<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+<mechanicalReduction>1</mechanicalReduction>
+</actuator>
+</transmission>
+
+
 </robot>
