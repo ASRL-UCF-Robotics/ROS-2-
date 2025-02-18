@@ -1,0 +1,36 @@
+<?xml version='1.0'?>
+<robot name="3_wheel_omni" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find gazebo_test)/model/rim.xacro"/>
+  <xacro:include filename="$(find gazebo_test)/model/plugins.gazebo"/>
+
+  <!-- World Link -->
+  <link name="base_link" />
+  <joint name="base_to_chassis" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis"/>
+  </joint>
+
+  <!-- Chassis -->
+  <link name="chassis">
+    <visual>
+      <geometry>
+        <cylinder length="0.126" radius="0.305"/>
+      </geometry>
+  </visual>
+
+  <!-- Gazebo based -->
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <mass value="1"/>
+    <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+  </inertial>
+
+  </link>
+
+  <!--Wheel Rims -->
+  <xacro:rim name="wheel_1" parent="chassis" xyz="0.286 0 0" rpy="1.57 0 1.57" GAZEBO_color = "Gazebo/Red"/>
+  <xacro:rim name="wheel_2" parent="chassis" xyz="-0.143 0.2477 0" rpy="1.57 0 -2.618" GAZEBO_color = "Gazebo/Blue"/>
+  <xacro:rim name="wheel_3" parent="chassis" xyz="-0.143 -0.2477 0" rpy="1.57 0 -0.5236" GAZEBO_color = "Gazebo/Green"/>
+
+
+</robot>
