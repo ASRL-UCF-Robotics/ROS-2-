@@ -1,6 +1,0 @@
-STEPS FOR RVIZ
-source /opt/ros/jazzy/setup.bash
-cd ~/[file]
-colcon build
-source ~/[file]/install/setup.bash
-ros2 launch urdf_test display.launch.py
