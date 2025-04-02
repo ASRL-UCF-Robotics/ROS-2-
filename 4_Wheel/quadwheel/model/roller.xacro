@@ -1,22 +1,27 @@
 <?xml version='1.0'?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-<xacro:macro name="roller" params="name parent xyz rpy">
+<xacro:macro name="roller" params="name parent xyz rpy GAZEBO_color">
   <link name="roller_${name}_rim_${parent}_link">
     <inertial>
+      <origin xyz="0 -0.0182 0" rpy="0 0 0" />
       <inertia ixx="1e-6" ixy="0.0" ixz="0.0" iyy="1e-6" iyz="0.0" izz="1e-7"/>
       <mass value="0.010"/>
     </inertial>
     <visual>
+      <origin xyz="0 -0.0182 0" rpy="0 0 0" />
       <geometry>
         <cylinder radius="0.01" length="0.03"/>
       </geometry>
     </visual>
+
     <collision>
+      <origin xyz="0 -0.0182 0" rpy="0 0 0" />
       <geometry>
         <cylinder radius="0.01" length="0.03"/>
       </geometry>
     </collision>
   </link>
+
   <joint name="roller_${name}_rim_${parent}_joint" type="continuous">
     <parent link="rim_${parent}_link"/>
     <child link="roller_${name}_rim_${parent}_link"/>
@@ -24,5 +29,15 @@
     <origin xyz="${xyz}" rpy="${rpy}"/>
     <limit effort="1000" velocity="31.4"/>
   </joint>
+
+<gazebo reference="roller_${name}_rim_${parent}_link">
+  <mu>0.2</mu>
+  <mu2>0.2</mu2>
+  <material value= "${GAZEBO_color}"/>
+</gazebo>
+
 </xacro:macro>
+
+
+
 </robot>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>gazebo_test</name>
+  <name>quadwheel</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
   <maintainer email="bastianweiss@todo.todo">bastianweiss</maintainer>
@@ -13,11 +13,15 @@
   <test_depend>ament_lint_common</test_depend>
 
   <depend>joint_state_publisher</depend>
+  <depend>joint_state_publisher_gui</depend>
   <depend>robot_state_publisher</depend>
+
   <depend>ros_gz_sim</depend>
   <depend>ros_gz_bridge</depend>
   <depend>ros_gz_image</depend>
+
   <depend>xacro</depend>
+  <depend>rviz2</depend>
 
   <export>
     <build_type>ament_cmake</build_type>

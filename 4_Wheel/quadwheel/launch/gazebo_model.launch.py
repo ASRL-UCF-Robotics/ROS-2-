@@ -16,11 +16,11 @@ import launch_ros
 def generate_launch_description():
     
     # this name has to match the robot name in the Xacro file
-    robotXacroName='3_wheel_omni'
+    robotXacroName='4_wheel_omni'
     
     # this is the name of our package, at the same time this is the name of the 
     # folder that will be used to define the paths
-    namePackage = 'gazebo_test'
+    namePackage = 'quadwheel'
     
     # this is a relative path to the xacro file defining the model
     modelFileRelativePath = 'model/main.xacro'
@@ -73,7 +73,7 @@ def generate_launch_description():
         
     )
     #RVIZ2 Launch
-    rviz = os.path.join(get_package_share_directory('gazebo_test'), 'model.rviz')
+    rviz = os.path.join(get_package_share_directory('quadwheel'), 'model.rviz')
     nodeRVIZ2 = Node(
     	package='rviz2',
         executable='rviz2',
