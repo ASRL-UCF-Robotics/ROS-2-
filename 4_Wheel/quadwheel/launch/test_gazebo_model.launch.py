@@ -39,7 +39,8 @@ def generate_launch_description():
 	world_name = 'lab_world.world'
 	urdf_name = 'main.xacro'
 	urdf_folder_name = 'model'
-	controller_name = 'my_controllers.yaml'
+	controller_name = 'test_controllers.yaml'
+	bridge_param_file = 'gz_bridge_params.yaml'
 
 	#-------------------------------------------------------------------------------
 	# Variables
@@ -49,6 +50,7 @@ def generate_launch_description():
 	path_to_urdf = os.path.join(get_package_share_directory(package_name),urdf_folder_name,urdf_name)
 	path_to_world = os.path.join(get_package_share_directory(package_name),urdf_folder_name,world_name)
 	path_to_controller = os.path.join(get_package_share_directory(package_name),'config',controller_name)
+	path_to_bridge_params = os.path.join(get_package_share_directory(package_name),'config',bridge_param_file)
 
 	# Robot Description 
 	robot_description = xacro.process_file(path_to_urdf).toxml()
@@ -64,28 +66,24 @@ def generate_launch_description():
     		description='Full path to the world model file to load'
 	)
 
-	# Launch Gazebo
+	# Launch Gazebo -  (-r -v4 is for debug, shudown closes everything when gazebo does.)
 	gz_server = IncludeLaunchDescription(gz_launch_path,
-		launch_arguments={'gz_args':path_to_world}.items(),
+		launch_arguments={'gz_args': [' -r -v4 ', path_to_world], 'on_exit_shutdown': 'true'}.items(),
 	)
-
-	# Spawn Gazebo Model - Same as gazebo_ros spawn_eneity.py from old versions
-	spawn_model_node = Node(package='ros_gz_sim', executable='create',
-		arguments=['-topic','robot_description','-name', robot_name],output='screen')
 
 	# Publishers
 	# Robot State Publisher
-	robot_state_publisher_node = launch_ros.actions.Node(
+	robot_state_publisher_node = Node(
    		package='robot_state_publisher',
-        	executable='robot_state_publisher',
-		output='screen',
+        executable='robot_state_publisher',
+		output='both',
         	parameters=[{'robot_description': robot_description,
 			     'use_sim_time': True,
 		           }],     
 	)
 		
 	# Joint State Publisher
-	joint_state_publisher_node = launch_ros.actions.Node(
+	joint_state_publisher_node = Node(
        		package='joint_state_publisher',
         	executable='joint_state_publisher',
         	name='joint_state_publisher',
@@ -95,7 +93,7 @@ def generate_launch_description():
       
    	)
 
-	joint_state_publisher_gui_node = launch_ros.actions.Node(
+	joint_state_publisher_gui_node = Node(
         	package='joint_state_publisher_gui',
         	executable='joint_state_publisher_gui',
         	name='joint_state_publisher_gui',
@@ -106,11 +104,22 @@ def generate_launch_description():
     		package='rviz2',
         	executable='rviz2',
         	name='rviz2',
-        	output='screen'
+        	output='screen',
     	)
 	
+	# Spawn Gazebo Model - Same as gazebo_ros spawn_eneity.py from old versions
+	spawn_model_node = Node(
+		package='ros_gz_sim',
+		executable='create',
+		arguments=['-topic',
+			'robot_description',
+			'-name',
+			robot_name,
+			'-z', '1'], #spawn robot in sky for a second fix later
+			output='screen',
+	)
+	
 	## Controller Section 
-
 	joint_broad_spawner = Node(
         package='controller_manager',
         executable='spawner',
@@ -119,26 +128,27 @@ def generate_launch_description():
 
 	# Controller Spawner
 	# Test Controller
-	controller_spawner = Node(
+	joint_controller_spawner = Node(
 		package='controller_manager',
 		executable='spawner',
+		parameters=[{'robot_description': robot_description}],
         arguments=[
-			'joint_trajectory_controller',
+			'joint_cont',
 			'--param-file',
 			path_to_controller,
 			],
 	)
 
-	# Omni Wheel Controller 
-	controller_spawner = Node(
-		package='controller_manager',
-		executable='spawner',
+	# Ros Gz Bridge
+	ros_gz_bridge_node = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
         arguments=[
-			'omni_cont',
-			'--param-file',
-			path_to_controller,
+			'--ros-args',
+			'-p',
+			f'config_file:={path_to_bridge_params}',
 			],
-	)
+    )
 
 
 	#-----------------------------------------------------------
@@ -155,6 +165,8 @@ def generate_launch_description():
 	ld.add_action(rviz_node)
 
 	ld.add_action(joint_broad_spawner)
-	ld.add_action(controller_spawner)
+	ld.add_action(joint_controller_spawner)
+	
+	ld.add_action(ros_gz_bridge_node)
 
 	return ld

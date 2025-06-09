@@ -46,8 +46,6 @@
 <xacro:roller name="18" parent="${name}"  xyz="0.0390 -0.0142 -0.008" rpy="1.57 0 5.9341" GAZEBO_color = "${GAZEBO_color}"/>
 
 <gazebo reference="rim_${name}_link">
-  <mu>0.2</mu>
-  <mu2>0.2</mu2>
   <material value= "${GAZEBO_color}"/>
 </gazebo>
 

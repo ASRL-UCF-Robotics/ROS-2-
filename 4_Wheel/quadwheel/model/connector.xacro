@@ -23,16 +23,15 @@
     <child link="C${name}"/>
     <origin xyz = "${xyz}" rpy = "${rpy}"/>
     <axis xyz = "0 0 1"/>
+    <limit velocity="1.0" effort="30" />
   </joint>
 
-  <!--Wheel Rims -->
+  <!-- Wheel Rims -->
   <xacro:rim name="wheel_${name}" parent="C${name}" xyz="0 0 -0.0572" rpy="0 0 0" GAZEBO_color = "${GAZEBO_color}"/>
  
-<gazebo reference="C${name}">
-  <mu>0.2</mu>
-  <mu2>0.2</mu2>
-  <material value= "${GAZEBO_color}"/>
-</gazebo>
+  <gazebo reference="C${name}">
+    <material value= "${GAZEBO_color}"/>
+  </gazebo>
 
 </xacro:macro>
 </robot>
